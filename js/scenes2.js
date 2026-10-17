@@ -369,8 +369,8 @@
         blush: 0.6 + got * 0.15,
       });
       ctx.restore();
+      P.tape(ctx, -70, -108, 70, 22, -0.5, P.COL.tape);
       ctx.restore();
-      P.tape(ctx, ix - 70, iy - 108, 70, 22, -0.5, P.COL.tape);
       // 照片飞向小猪
       const photos = [photoMountain, photoFall, photoFlower];
       C.shots.forEach((s, i) => {

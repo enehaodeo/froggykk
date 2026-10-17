@@ -352,7 +352,6 @@
         return;
       }
       // 回转寿司
-      const l2 = lt - half;
       SK.bg(ctx, '#f4e6cf');
       for (let i = 0; i < 26; i++) line(ctx, [[i * 52, 0], [i * 52, 420]], { lw: 1.6, line: 'rgba(150,110,70,0.3)' });
       // 门帘
