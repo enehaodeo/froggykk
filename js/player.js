@@ -224,7 +224,7 @@
   // 封面：停在片头标题
   t = 5.2;
   const ready = document.fonts && document.fonts.load
-    ? Promise.all([document.fonts.load('40px "ZCOOL KuaiLe"', '青蛙小飞猪晚安在一起啦扑通好巧哈'), document.fonts.load('40px Gaegu', 'Froggy 10/19')]).catch(() => {})
+    ? Promise.all([document.fonts.load('40px "ZCOOL KuaiLe"', '青蛙苍蝇猪晚安扑通好巧哈十月七生日快乐耶未完待续…' + TL.cue.chat.msgs.map((m) => m.text || '').join('')), document.fonts.load('40px Gaegu', 'Froggy 10/19')]).catch(() => {})
     : Promise.resolve();
   Promise.race([ready, new Promise((r) => setTimeout(r, 2500))]).then(() => {
     dirty = true;

@@ -134,8 +134,6 @@
         ctx.restore();
       }
       // 标题
-      const chars = ['青', '蛙'];
-      const chars2 = ['小', '飞', '猪'];
       const y0 = 250;
       const drawChar = (c, x, i) => {
         const k = SK.pop(lt, 0.5 + i * 0.16, 0.45);
@@ -153,8 +151,8 @@
         const beat = 1 + 0.08 * Math.max(0, Math.sin(lt * Math.PI * 2 / TL.BEAT * 0.5));
         P.heart(ctx, 640, y0 + 4, 40 * hk * beat, '#ef5a6f');
       }
-      drawChar('小', 790, 2);
-      drawChar('飞', 898, 3);
+      drawChar('苍', 790, 2);
+      drawChar('蝇', 898, 3);
       drawChar('猪', 1006, 4);
       const sk = SK.pop(lt, 2.0, 0.5);
       if (sk > 0) {
@@ -346,10 +344,6 @@
         SH.fallingLeaves(ctx, lt, { n: 16 });
         ctx.restore();
       }
-      ctx.save();
-      ctx.globalAlpha = 1 - SK.prog(lt, 3.6, 4.1);
-      P.caption(ctx, '那年秋天 · 校园', lt, { start: 0.4 });
-      ctx.restore();
     },
   };
 
@@ -646,7 +640,6 @@
         if (Math.abs(k - 0.5) < 0.1) P.sparkle(ctx, 640, 210, 30, '#fff3a0');
       }
       P.burst(ctx, lt, C.fly + 0.8, 640, 230, { kind: 'heart', n: 10, speed: 120, size: 10 });
-      P.caption(ctx, '同一天 · 两个环球影城', lt, { x: 640, y: 46, start: 0.3, rot: 0.02 });
     },
   };
 
@@ -942,7 +935,7 @@
       shape(ctx, SK.rrect(-40, -H / 2 + 18, 80, 14, 7), { fill: '#3e6a4c', line: false });
       // 顶栏：小猪头像
       SH.miniPigFace(ctx, -W / 2 + 46, -H / 2 + 76, 14);
-      text(ctx, '小飞猪', -W / 2 + 104, -H / 2 + 76, { size: 22, seed: 5 });
+      text(ctx, '苍蝇猪', -W / 2 + 104, -H / 2 + 76, { size: 22, seed: 5 });
       line(ctx, [[-W / 2 + 16, -H / 2 + 100], [W / 2 - 16, -H / 2 + 100]], { lw: 1.6, line: 'rgba(60,40,30,0.4)' });
       ctx.save();
       ctx.beginPath();
@@ -1089,15 +1082,6 @@
         P.burst(ctx, lt, C.hug + 2.6, 640, 200, { n: 16, speed: 240, size: 11, seed: 2 });
         P.floatHearts(ctx, lt - C.hug, 640, 460, { n: 8, spread: 160, rise: 200, size: 12 });
         P.confetti(ctx, lt, C.hug, { n: 70 });
-      }
-      if (lt > C.words) {
-        const k = SK.pop(lt, C.words, 0.5);
-        ctx.save();
-        ctx.translate(640, 120);
-        ctx.scale(k, k);
-        text(ctx, '在一起啦!', 0, 0, { size: 84, color: '#ef5a6f', outline: '#fff', outlineW: 12, seed: 7 });
-        ctx.restore();
-        P.heart(ctx, 860, 96, 18 * k, '#ef5a6f');
       }
       P.heartIris(ctx, SK.prog(lt, C.iris, 12), 640, 520, '#2a1e1a');
     },

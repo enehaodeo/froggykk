@@ -80,7 +80,6 @@
         P.calendar(ctx, 0, 0, 0.5, { month: '', day: label(m - 1), daySize: 80, top: '#7aa6e8' });
         ctx.restore();
       }
-      P.caption(ctx, '时光流逝', lt, { start: 0.1 });
     },
   };
 
@@ -247,7 +246,6 @@
           P.floatHearts(ctx, lt - C.love, pigX, 430, { n: 8, spread: 200, rise: 200, size: 11 });
         }
       }
-      P.caption(ctx, '石膏画 · 青蛙的作品', lt, { start: 0.1 });
     },
   };
 
@@ -351,7 +349,6 @@
           }
         }
         if (lt > C.bites[1]) P.floatHearts(ctx, lt - C.bites[1], 640, 440, { n: 6, spread: 200, rise: 150, size: 10 });
-        P.caption(ctx, '一起吃马卡龙', lt, { start: 0.1 });
         return;
       }
       // 回转寿司
@@ -363,7 +360,6 @@
         const sw = Math.sin(lt * 1.5 + i) * 3;
         shape(ctx, SK.poly([[380 + i * 104, 0], [478 + i * 104, 0], [478 + i * 104 + sw, 120], [380 + i * 104 + sw, 120]]), { fill: i % 2 ? '#2f4f7a' : '#3b5f8a', lw: 2.4 });
       }
-      text(ctx, '回 转 寿 司', 640, 60, { size: 40, color: '#fff7e0', seed: 5 });
       for (const lx of [200, 1080]) {
         line(ctx, [[lx, 0], [lx, 70]], { lw: 2 });
         SK.glow(ctx, lx, 130, 90, '#ffcf8a', 0.5);
@@ -420,7 +416,6 @@
         sushi(ctx, SK.lerp(sx, tx, k), 520 - Math.sin(k * Math.PI) * 120, gi + 1);
       });
       if (full > 0) P.floatHearts(ctx, lt, 640, 400, { n: 6, spread: 360, rise: 120, size: 9, alpha: full });
-      P.caption(ctx, '回转寿司', l2, { start: 0.1 });
     },
   };
 
@@ -482,7 +477,6 @@
       ctx.fillStyle = flick > 0.6 ? '#8fb8ff' : '#ffd29a';
       ctx.fillRect(0, 0, SK.W, SK.H);
       ctx.restore();
-      P.caption(ctx, '一起看电影', lt, { start: 0.3 });
     },
   };
 
@@ -595,7 +589,6 @@
       shape(ctx, SK.rrect(200, 560, 90, 220, 40), { fill: '#6fb3ab', lw: 2.6 });
       shape(ctx, SK.rrect(990, 560, 90, 220, 40), { fill: '#6fb3ab', lw: 2.6 });
       if (won) P.confetti(ctx, lt, C.win, { n: 40, x0: 350, w: 580, y0: 90 });
-      P.caption(ctx, '一起打游戏', lt, { start: 0.1 });
     },
   };
 
@@ -688,7 +681,6 @@
         SK.glow(ctx, x, y, 14, '#fff2a0', 0.9);
         ctx.restore();
       }
-      P.caption(ctx, '河边散步', lt, { start: 0.2 });
     },
   };
 

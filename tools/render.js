@@ -22,15 +22,17 @@ async function openPage(browser, w, h) {
   page.on('pageerror', (e) => console.error('pageerror:', e.message));
   await page.goto('file://' + path.join(ROOT, 'index.html') + '?offline');
   await page.addScriptTag({ path: path.join(ROOT, 'js/music.js') });
-  await page.evaluate(async () => {
-    const chars = '青蛙和小飞猪那年秋天校园扑通同一天两个环球影城好巧哈晚安十月七在一起啦密室逃脱游山玩水分享给你生日快乐这看恐怖片海洋公园打羽毛球利波特闪时光流逝石膏画的作品吃马卡龙回转寿司电影游戏耶河边散步未完待续…';
+  // 预先加载影片里用到的所有汉字（Google Fonts 的中文字体按字符分片加载）
+  const src = fs.readdirSync(path.join(ROOT, 'js')).map((f) => fs.readFileSync(path.join(ROOT, 'js', f), 'utf8')).join('');
+  const cjk = [...new Set(src.match(/[\u3000-\u9fff\uff00-\uffef…]/g) || [])].join('');
+  await page.evaluate(async (chars) => {
     try {
       await document.fonts.load('40px "ZCOOL KuaiLe"', chars);
       await document.fonts.load('40px Gaegu', 'Froggy Piggy 0123456789/ yes or no BOO');
       await document.fonts.load('bold 40px Gaegu', 'Froggy Piggy 0123456789/ YES BOO');
     } catch (e) {}
     await document.fonts.ready;
-  });
+  }, cjk);
   return page;
 }
 

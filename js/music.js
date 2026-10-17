@@ -794,7 +794,6 @@
         X.pop(at(id, C.hug + d), 1.5 + i * 0.2, 0.4);
         X.sparkle(at(id, C.hug + d + 0.05), 0.25);
       });
-      X.pop(at(id, C.words), 1.1, 0.5);
     }
     // 9. 蒙太奇：密室逃脱
     {

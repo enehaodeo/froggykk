@@ -298,7 +298,7 @@
     shape(ctx, SK.circ(x, y, r), { fill: color, lw: 2.6 });
   };
 
-  /* ---------- 胶带标签（蒙太奇小标题） ---------- */
+  /* ---------- 胶带 ---------- */
   P.tape = function (ctx, x, y, w, h, rot = 0, color = P.COL.tape, o = {}) {
     ctx.save();
     ctx.translate(x, y);
@@ -323,19 +323,6 @@
     if (o.text) text(ctx, o.text, 0, 1, { size: o.size || h * 0.6, color: o.textColor || SK.INK, seed: 4 });
     ctx.restore();
   };
-  P.caption = function (ctx, str, lt, o = {}) {
-    const k = SK.pop(lt, o.start || 0.15, 0.4);
-    if (k <= 0) return;
-    const size = o.size || 30;
-    const w = SK.measure(ctx, str, size) + 46;
-    ctx.save();
-    const x = o.x || 40 + w / 2, y = o.y || 52;
-    ctx.translate(x, y);
-    ctx.scale(k, k);
-    P.tape(ctx, 0, 0, w, size * 1.55, o.rot == null ? -0.04 : o.rot, o.color || P.COL.tape, { text: str, size });
-    ctx.restore();
-  };
-
   /* ---------- 日历 ---------- */
   P.calendar = function (ctx, x, y, s = 1, o = {}) {
     ctx.save();

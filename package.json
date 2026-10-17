@@ -2,7 +2,7 @@
   "name": "froggy-and-piggy",
   "version": "1.0.0",
   "private": true,
-  "description": "青蛙 ♥ 小飞猪：一部手绘风格的动画短片",
+  "description": "青蛙 ♥ 苍蝇猪：一部手绘风格的动画短片",
   "scripts": {
     "audio": "node tools/render.js audio",
     "video": "node tools/render.js video"

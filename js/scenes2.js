@@ -234,7 +234,6 @@
         SH.softLight(m, 760, 210, 110, 0.6);
       });
       ctx.restore();
-      P.caption(ctx, '密室逃脱', lt, { start: 0.1 });
     },
   };
 
@@ -385,7 +384,6 @@
         if (k >= 1) P.burst(ctx, lt, s + 1.1, tx, ty - 30, { kind: 'heart', n: 8, speed: 90, size: 8, life: 1.0 });
       });
       if (lt > C.shots[1] + 1.2) P.floatHearts(ctx, lt, ix, iy - 20, { n: 5, spread: 120, rise: 90, size: 8, alpha: SK.prog(lt, C.shots[1] + 1.2, C.shots[1] + 1.6) });
-      P.caption(ctx, '游山玩水 · 分享给你', lt, { start: 0.1 });
     },
   };
 
@@ -489,7 +487,6 @@
           P.confetti(ctx, lt, C.blow, { n: 60 });
           P.burst(ctx, lt, C.blow, 640, 380, { n: 16, speed: 260, size: 12 });
         }
-        P.caption(ctx, '7/4 · 小猪生日', lt, { start: 1.5 });
         return;
       }
       // 恐怖片
@@ -542,7 +539,6 @@
         ctx.fillRect(0, 0, SK.W, SK.H);
         ctx.restore();
       }
-      P.caption(ctx, '生日这天 · 一起看恐怖片', lt, { start: 4.5 });
     },
   };
 
@@ -652,7 +648,6 @@
         SK.glow(ctx, x, 640 + Math.sin(lt + i) * 10, 80, '#ffffff', 1);
       }
       ctx.restore();
-      P.caption(ctx, '海洋公园', lt, { start: 0.1 });
     },
   };
 
@@ -788,7 +783,6 @@
           text(ctx, '哈哈哈', 640, 330, { size: 40, color: '#ef5a6f', outline: '#fff', outlineW: 6 });
         }
       }
-      P.caption(ctx, '一起打羽毛球', lt, { start: 0.1 });
     },
   };
 
@@ -902,7 +896,6 @@
         ctx.restore();
         P.burst(ctx, lt, C.flash, 640, 400, { kind: 'star', n: 16, speed: 260, size: 12, colors: ['#ffe27a', '#fff'] });
       }
-      P.caption(ctx, '哈利波特快闪', lt, { start: 0.1 });
     },
   };
 })();

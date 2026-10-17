@@ -75,7 +75,7 @@
   C.night = { send: 2.0, star: [3.8, 5.6], read: 6.6, lightsOff: 8.2 };
   C.dream = { turn: 3.6, heart: 5.0, catch: 7.4 };
   C.d1019 = { msgs: [3.0, 3.9, 4.8, 5.7, 6.6, 7.5], yesno: 8.4, burst: 9.6 };
-  C.d1020 = { tear: 0.6, yes: 3.0, hug: 6.0, words: 6.6, iris: 10.6 };
+  C.d1020 = { tear: 0.6, yes: 3.0, hug: 6.0, iris: 10.6 };
   C.escape = { scare: 2.6 };
   C.travel = { shots: [1.4, 3.2, 5.0] };
   C.bday = { blow: 3.5, scare: 6.4 };
