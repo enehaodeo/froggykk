@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>青蛙与小飞猪</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=ZCOOL+KuaiLe&display=swap">
+<style>
+  /* 放映室：深可可色的幕布，影片像一张手绘纸片 */
+  :root {
+    --bg: #241a17;
+    --curtain: #2e211c;
+    --paper: #fbf5e8;
+    --cream: #f4e7d3;
+    --muted: #bba48f;
+    --frog: #9ccc68;
+    --pig: #f8bccb;
+    --tape: #a9d9f2;
+    --ink: #3b2a24;
+    --display: "ZCOOL KuaiLe", "Gaegu", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: radial-gradient(120% 80% at 50% 0%, var(--curtain), var(--bg) 70%);
+    background-color: var(--bg);
+    color: var(--cream);
+    font-family: var(--body);
+  }
+  .wrap {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-block: 18px 22px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  header { text-align: center; display: grid; gap: 2px; }
+  h1 {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(28px, 4.2vw, 44px);
+    letter-spacing: 0.06em;
+    text-wrap: balance;
+  }
+  h1 .f { color: var(--frog); }
+  h1 .p { color: var(--pig); }
+  h1 .h { color: #ef5a6f; font-size: 0.8em; padding-inline: 0.2em; }
+  .sub { margin: 0; color: var(--muted); font-size: 14px; letter-spacing: 0.08em; }
+  .stage {
+    position: relative;
+    width: min(100%, 1280px, calc((100vh - 190px) * 16 / 9));
+    min-width: min(100%, 320px);
+    display: grid;
+    gap: 10px;
+  }
+  .screen { position: relative; }
+  canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 100%;
+    border-radius: 10px;
+    background: var(--paper);
+    box-shadow: 0 0 0 6px #fffaf0, 0 0 0 8px #d9c6ab, 0 24px 60px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+  }
+  .cover {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    padding-bottom: 7%;
+    border-radius: 10px;
+    background: linear-gradient(to top, rgba(36, 26, 23, 0.55), rgba(36, 26, 23, 0) 45%);
+  }
+  .start {
+    font-family: var(--display);
+    font-size: clamp(18px, 2.6vw, 26px);
+    color: var(--ink);
+    background: var(--tape);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    padding: 0.45em 1.4em 0.4em 1.1em;
+    box-shadow: 0 4px 0 var(--ink);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    transform: rotate(-1.5deg);
+    transition: transform 0.15s ease;
+  }
+  .start::before {
+    content: "";
+    width: 0; height: 0;
+    border-left: 0.7em solid var(--ink);
+    border-top: 0.42em solid transparent;
+    border-bottom: 0.42em solid transparent;
+  }
+  .start:hover { transform: rotate(0deg) scale(1.04); }
+  .start:focus-visible, .ctl:focus-visible, input[type=range]:focus-visible { outline: 3px solid var(--frog); outline-offset: 3px; }
+  .cover[hidden] { display: none; }
+  .hint { margin: 0; font-size: 13px; color: var(--cream); text-shadow: 0 1px 3px rgba(0,0,0,0.6); letter-spacing: 0.1em; }
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 4px;
+  }
+  .ctl {
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+  .ctl:hover { background: rgba(244, 231, 211, 0.1); }
+  #play::before {
+    content: "";
+    width: 0; height: 0;
+    margin-left: 3px;
+    border-left: 13px solid var(--cream);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+  }
+  #play[data-state="pause"]::before {
+    margin-left: 0;
+    width: 12px; height: 14px;
+    border: 0;
+    background: linear-gradient(to right, var(--cream) 0 4px, transparent 4px 8px, var(--cream) 8px 12px);
+  }
+  #fullscreen::before {
+    content: "";
+    width: 14px; height: 14px;
+    background:
+      linear-gradient(var(--cream), var(--cream)) left top / 6px 2px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) left top / 2px 6px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) right top / 6px 2px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) right top / 2px 6px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) left bottom / 6px 2px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) left bottom / 2px 6px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) right bottom / 6px 2px no-repeat,
+      linear-gradient(var(--cream), var(--cream)) right bottom / 2px 6px no-repeat;
+  }
+  input[type=range] {
+    flex: 1;
+    min-width: 0;
+    accent-color: var(--frog);
+    height: 24px;
+    cursor: pointer;
+  }
+  #time { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--muted); white-space: nowrap; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; max-width: 60ch; line-height: 1.6; }
+  .stage:fullscreen { width: 100vw; height: 100vh; background: #000; align-content: center; justify-items: center; padding: 12px; }
+  .stage:fullscreen .screen { width: min(100%, calc((100vh - 80px) * 16 / 9)); }
+  .stage:fullscreen .controls { width: min(100%, calc((100vh - 80px) * 16 / 9)); }
+  @media (max-width: 520px) {
+    .controls { gap: 8px; }
+    #time { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1><span class="f">青蛙</span><span class="h">♥</span><span class="p">小飞猪</span></h1>
+    <p class="sub">手绘动画短片 · 约 4 分钟 · 有音乐</p>
+  </header>
+  <section id="stage" class="stage" aria-label="动画短片">
+    <div class="screen">
+      <canvas id="film" width="1280" height="720" aria-label="动画画面"></canvas>
+      <div id="cover" class="cover">
+        <button id="start" class="start" type="button">开始放映</button>
+        <p class="hint">记得打开声音</p>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="play" class="ctl" type="button" aria-label="播放" data-state="play"></button>
+      <input id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="播放进度">
+      <span id="time">0:00</span>
+      <button id="fullscreen" class="ctl" type="button" aria-label="全屏"></button>
+    </div>
+  </section>
+  <footer>主演：一只丑萌的绿色青蛙，和一只长着透明小翅膀的丑萌小猪。点击画面可暂停，空格键播放 / 暂停。</footer>
+</main>
+<audio id="music" src="music.mp3" preload="auto"></audio>
+<script src="js/sketch.js"></script>
+<script src="js/chars.js"></script>
+<script src="js/props.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/scenes1.js"></script>
+<script src="js/scenes2.js"></script>
+<script src="js/scenes3.js"></script>
+<script src="js/film.js"></script>
+<script src="js/player.js"></script>
+</body>
+</html>
