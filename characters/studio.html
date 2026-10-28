@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>角色工作台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=ZCOOL+KuaiLe&display=swap">
+<style>
+  /* 和放映页同一套颜色 */
+  :root {
+    --bg: #241a17;
+    --panel: #2e211c;
+    --paper: #fbf5e8;
+    --cream: #f4e7d3;
+    --muted: #bba48f;
+    --frog: #9ccc68;
+    --pig: #f8bccb;
+    --tape: #a9d9f2;
+    --ink: #3b2a24;
+    --display: "ZCOOL KuaiLe", "Gaegu", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--cream); font-family: var(--body); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 16px 28px; display: grid; gap: 16px; }
+  h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(26px, 4vw, 38px); letter-spacing: 0.06em; }
+  h1 .f { color: var(--frog); } h1 .p { color: var(--pig); }
+  .sub { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .main { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+  @media (max-width: 760px) { .main { grid-template-columns: minmax(0, 1fr); } }
+  .view {
+    border-radius: 10px;
+    background-color: #fffaf0;
+    background-image: linear-gradient(45deg, #efe6d6 25%, transparent 25%, transparent 75%, #efe6d6 75%), linear-gradient(45deg, #efe6d6 25%, transparent 25%, transparent 75%, #efe6d6 75%);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    box-shadow: 0 0 0 6px #fffaf0, 0 0 0 8px #d9c6ab;
+  }
+  .view canvas { display: block; width: 100%; height: auto; }
+  form { display: grid; gap: 12px; background: var(--panel); border-radius: 10px; padding: 14px; }
+  label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+  select, input[type=range] { width: 100%; accent-color: var(--frog); }
+  select { background: var(--bg); color: var(--cream); border: 1px solid #5a463c; border-radius: 6px; padding: 6px; font: inherit; font-size: 14px; }
+  .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+  .checks label { display: flex; gap: 6px; align-items: center; color: var(--cream); font-size: 14px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  button {
+    font-family: var(--display); font-size: 17px; color: var(--ink); background: var(--tape);
+    border: 2px solid var(--ink); border-radius: 999px; padding: 0.35em 1.1em; cursor: pointer; box-shadow: 0 3px 0 var(--ink);
+  }
+  button.alt { background: var(--cream); }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--frog); outline-offset: 2px; }
+  .hint { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0; }
+  code { color: var(--cream); }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>角色工作台 · <span class="f">青蛙</span> &amp; <span class="p">苍蝇猪</span></h1>
+    <p class="sub">和影片用的是同一份绘制代码。选好姿势和表情，下载透明背景 PNG。</p>
+  </header>
+  <div class="main">
+    <div class="view"><canvas id="cv" aria-label="角色预览"></canvas></div>
+    <form id="f" onsubmit="return false">
+      <label>角色<select id="who"><option value="frog">青蛙</option><option value="pig">苍蝇猪</option></select></label>
+      <label>表情<select id="face"></select></label>
+      <label>手臂<select id="arms"></select></label>
+      <div class="checks">
+        <label><input type="checkbox" id="fly"> 飞（苍蝇猪）</label>
+        <label><input type="checkbox" id="back"> 背面</label>
+        <label><input type="checkbox" id="walk"> 走路</label>
+        <label><input type="checkbox" id="flip"> 左右翻转</label>
+        <label><input type="checkbox" id="sweat"> 流汗</label>
+        <label><input type="checkbox" id="brows"> 皱眉（青蛙）</label>
+        <label><input type="checkbox" id="beret"> 贝雷帽</label>
+        <label><input type="checkbox" id="anim" checked> 动起来</label>
+      </div>
+      <label>眼睛看向 左 ↔ 右<input type="range" id="lx" min="-1" max="1" step="0.05" value="0"></label>
+      <label>眼睛看向 上 ↔ 下<input type="range" id="ly" min="-1" max="1" step="0.05" value="0"></label>
+      <label>腮红<input type="range" id="blush" min="0" max="1.4" step="0.05" value="0.6"></label>
+      <label>背景<select id="bg"><option value="">透明</option><option value="paper">纸张</option><option value="#ffffff">白色</option></select></label>
+      <label>导出尺寸<select id="px"><option value="2">600 × 480</option><option value="4" selected>1200 × 960</option><option value="8">2400 × 1920</option></select></label>
+      <div class="row"><button type="button" id="dl">下载 PNG</button></div>
+      <p class="hint">批量导出所有姿势、表情、设定图和循环动画：<code>node tools/export-characters.js</code></p>
+    </form>
+  </div>
+</main>
+<script src="../js/sketch.js"></script>
+<script src="../js/chars.js"></script>
+<script src="../js/props.js"></script>
+<script src="studio.js"></script>
+<script>
+  (function () {
+    if (/[?&]export\b/.test(location.search)) return; // 供导出脚本使用时不启动界面
+    const $ = (id) => document.getElementById(id);
+    const cv = $('cv');
+    const FACES = [['smile', '微笑'], ['happy', '开心'], ['open', '兴奋'], ['yell', '大喊'], ['love', '心动'], ['o', '惊讶'], ['scared', '害怕'], ['sad', '难过'], ['cry', '哭（青蛙）'], ['sleep', '睡着'], ['flat', '无语'], ['kiss', '亲亲']];
+    const ARMS = [['down', '放下'], ['wave', '挥手'], ['cheer', '欢呼'], ['up', '举高'], ['heart', '比心'], ['hug', '抱抱'], ['hip', '叉腰'], ['front', '护在胸前'], ['phone', '捧手机']];
+    FACES.forEach(([v, n]) => $('face').add(new Option(n, v)));
+    ARMS.forEach(([v, n]) => $('arms').add(new Option(n, v)));
+
+    function opts(t) {
+      const who = $('who').value;
+      const o = {
+        face: $('face').value,
+        arms: $('arms').value,
+        look: [+$('lx').value, +$('ly').value],
+        blush: +$('blush').value,
+        fly: $('fly').checked,
+        back: $('back').checked,
+        flip: $('flip').checked,
+        sweat: $('sweat').checked,
+        brows: $('brows').checked ? 'worried' : null,
+        blink: $('anim').checked,
+      };
+      if ($('walk').checked) o.walk = t * 9;
+      if ($('beret').checked) o.acc = STUDIO.ACC.beret;
+      if (o.arms === 'phone') o.hold = STUDIO.phone(who === 'frog' ? '#5f9a6e' : '#e7849b');
+      return o;
+    }
+    function draw(canvas, P, t) {
+      const who = $('who').value;
+      return STUDIO.render(canvas, STUDIO.BOX, P, t, $('bg').value || null, (ctx) => STUDIO.drawChar(ctx, who, 0, 0, 1, opts(t), t));
+    }
+    const t0 = performance.now();
+    function frame() {
+      const t = $('anim').checked ? (performance.now() - t0) / 1000 : 0.3;
+      draw(cv, Math.min(2, window.devicePixelRatio || 1) * 2, t);
+      requestAnimationFrame(frame);
+    }
+    $('dl').addEventListener('click', () => {
+      const c = draw(document.createElement('canvas'), +$('px').value, 0.3);
+      const a = document.createElement('a');
+      a.download = `${$('who').value}-${$('face').value}-${$('arms').value}.png`;
+      a.href = c.toDataURL('image/png');
+      a.click();
+    });
+    document.fonts.ready.then(() => requestAnimationFrame(frame));
+  })();
+</script>
+</body>
+</html>

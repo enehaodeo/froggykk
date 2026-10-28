@@ -5,7 +5,8 @@
   "description": "青蛙 ♥ 苍蝇猪：一部手绘风格的动画短片",
   "scripts": {
     "audio": "node tools/render.js audio",
-    "video": "node tools/render.js video"
+    "video": "node tools/render.js video",
+    "characters": "node tools/export-characters.js"
   },
   "devDependencies": {
     "playwright": "^1.56.1"

@@ -1,0 +1,610 @@
+{
+  "palette": {
+    "frog": [
+      [
+        "身体",
+        "#9ccc68"
+      ],
+      [
+        "阴影 / 斑点",
+        "#74a84a"
+      ],
+      [
+        "肚皮",
+        "#e4f1b4"
+      ],
+      [
+        "腮红 55%",
+        "#ff7891"
+      ],
+      [
+        "嘴巴",
+        "#83343a"
+      ],
+      [
+        "墨线",
+        "#3b2a24"
+      ]
+    ],
+    "pig": [
+      [
+        "身体",
+        "#f8bccb"
+      ],
+      [
+        "阴影 / 耳内",
+        "#ec97ab"
+      ],
+      [
+        "鼻子",
+        "#f19bb0"
+      ],
+      [
+        "鼻孔",
+        "#7d3445"
+      ],
+      [
+        "蹄子",
+        "#c9798c"
+      ],
+      [
+        "翅膀",
+        "#cdecff"
+      ],
+      [
+        "翅脉",
+        "#6fa9cc"
+      ],
+      [
+        "墨线",
+        "#3b2a24"
+      ]
+    ]
+  },
+  "png": {
+    "note": "透明背景；anchor 为角色脚下中心在图片里的像素坐标，所有同类图片对齐，方便叠到视频里",
+    "single": {
+      "size": [
+        1200,
+        960
+      ],
+      "anchor": [
+        600,
+        860
+      ]
+    },
+    "duo": {
+      "size": [
+        2400,
+        960
+      ],
+      "anchor": [
+        1200,
+        860
+      ]
+    },
+    "files": [
+      {
+        "file": "png/frog/front.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "front",
+        "name": "正面"
+      },
+      {
+        "file": "png/frog/back.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "back",
+        "name": "背面"
+      },
+      {
+        "file": "png/frog/walk.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "walk",
+        "name": "走路"
+      },
+      {
+        "file": "png/frog/wave.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "wave",
+        "name": "打招呼"
+      },
+      {
+        "file": "png/frog/cheer.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "cheer",
+        "name": "欢呼"
+      },
+      {
+        "file": "png/frog/jump.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "jump",
+        "name": "蹦起来"
+      },
+      {
+        "file": "png/frog/heart.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "heart",
+        "name": "比心"
+      },
+      {
+        "file": "png/frog/hug.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "hug",
+        "name": "抱抱"
+      },
+      {
+        "file": "png/frog/hands-on-hips.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "hands-on-hips",
+        "name": "叉腰"
+      },
+      {
+        "file": "png/frog/phone.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "phone",
+        "name": "看手机"
+      },
+      {
+        "file": "png/frog/scared.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "scared",
+        "name": "吓得发抖"
+      },
+      {
+        "file": "png/frog/painter.png",
+        "who": "frog",
+        "kind": "pose",
+        "id": "painter",
+        "name": "贝雷帽"
+      },
+      {
+        "file": "png/frog/face-smile.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "smile",
+        "name": "微笑"
+      },
+      {
+        "file": "png/frog/face-shy.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "shy",
+        "name": "害羞"
+      },
+      {
+        "file": "png/frog/face-happy.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "happy",
+        "name": "开心"
+      },
+      {
+        "file": "png/frog/face-excited.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "excited",
+        "name": "兴奋"
+      },
+      {
+        "file": "png/frog/face-yell.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "yell",
+        "name": "大喊"
+      },
+      {
+        "file": "png/frog/face-love.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "love",
+        "name": "心动"
+      },
+      {
+        "file": "png/frog/face-surprised.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "surprised",
+        "name": "惊讶"
+      },
+      {
+        "file": "png/frog/face-scared.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "scared",
+        "name": "害怕"
+      },
+      {
+        "file": "png/frog/face-sad.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "sad",
+        "name": "难过"
+      },
+      {
+        "file": "png/frog/face-cry.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "cry",
+        "name": "哭"
+      },
+      {
+        "file": "png/frog/face-sleep.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "sleep",
+        "name": "睡着"
+      },
+      {
+        "file": "png/frog/face-flat.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "flat",
+        "name": "无语"
+      },
+      {
+        "file": "png/frog/face-kiss.png",
+        "who": "frog",
+        "kind": "expression",
+        "id": "kiss",
+        "name": "亲亲"
+      },
+      {
+        "file": "png/pig/front.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "front",
+        "name": "正面"
+      },
+      {
+        "file": "png/pig/back.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "back",
+        "name": "背面"
+      },
+      {
+        "file": "png/pig/fly.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "fly",
+        "name": "飞"
+      },
+      {
+        "file": "png/pig/walk.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "walk",
+        "name": "走路"
+      },
+      {
+        "file": "png/pig/wave.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "wave",
+        "name": "打招呼"
+      },
+      {
+        "file": "png/pig/cheer.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "cheer",
+        "name": "欢呼"
+      },
+      {
+        "file": "png/pig/jump.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "jump",
+        "name": "蹦起来"
+      },
+      {
+        "file": "png/pig/heart.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "heart",
+        "name": "比心"
+      },
+      {
+        "file": "png/pig/hug.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "hug",
+        "name": "抱抱"
+      },
+      {
+        "file": "png/pig/hands-on-hips.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "hands-on-hips",
+        "name": "叉腰"
+      },
+      {
+        "file": "png/pig/phone.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "phone",
+        "name": "看手机"
+      },
+      {
+        "file": "png/pig/back-fly.png",
+        "who": "pig",
+        "kind": "pose",
+        "id": "back-fly",
+        "name": "背面飞"
+      },
+      {
+        "file": "png/pig/face-smile.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "smile",
+        "name": "微笑"
+      },
+      {
+        "file": "png/pig/face-shy.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "shy",
+        "name": "害羞"
+      },
+      {
+        "file": "png/pig/face-happy.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "happy",
+        "name": "开心"
+      },
+      {
+        "file": "png/pig/face-excited.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "excited",
+        "name": "兴奋"
+      },
+      {
+        "file": "png/pig/face-yell.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "yell",
+        "name": "大喊"
+      },
+      {
+        "file": "png/pig/face-love.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "love",
+        "name": "心动"
+      },
+      {
+        "file": "png/pig/face-surprised.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "surprised",
+        "name": "惊讶"
+      },
+      {
+        "file": "png/pig/face-scared.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "scared",
+        "name": "害怕"
+      },
+      {
+        "file": "png/pig/face-sad.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "sad",
+        "name": "难过"
+      },
+      {
+        "file": "png/pig/face-sleep.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "sleep",
+        "name": "睡着"
+      },
+      {
+        "file": "png/pig/face-flat.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "flat",
+        "name": "无语"
+      },
+      {
+        "file": "png/pig/face-kiss.png",
+        "who": "pig",
+        "kind": "expression",
+        "id": "kiss",
+        "name": "亲亲"
+      },
+      {
+        "file": "png/duo/lineup.png",
+        "who": "duo",
+        "kind": "duo",
+        "id": "lineup",
+        "name": "并排站"
+      },
+      {
+        "file": "png/duo/hand-in-hand.png",
+        "who": "duo",
+        "kind": "duo",
+        "id": "hand-in-hand",
+        "name": "手牵手"
+      },
+      {
+        "file": "png/duo/hug.png",
+        "who": "duo",
+        "kind": "duo",
+        "id": "hug",
+        "name": "拥抱"
+      },
+      {
+        "file": "png/duo/walk-away.png",
+        "who": "duo",
+        "kind": "duo",
+        "id": "walk-away",
+        "name": "背影"
+      }
+    ]
+  },
+  "refs": [
+    "refs/frog.jpg",
+    "refs/pig.jpg",
+    "refs/pig-flying.jpg",
+    "refs/frog-back.jpg",
+    "refs/pig-back.jpg",
+    "refs/frog-and-pig.jpg"
+  ],
+  "sheets": [
+    "sheets/frog.jpg",
+    "sheets/pig.jpg",
+    "sheets/poses.jpg",
+    "sheets/together.jpg"
+  ],
+  "loops": {
+    "fps": 24,
+    "note": "webm 带透明通道（VP9 alpha）；mp4 / gif 为纸色背景（gif 为一半尺寸、一半帧率）。首尾无缝，可以直接循环播放",
+    "single": {
+      "size": [
+        900,
+        720
+      ],
+      "anchor": [
+        450,
+        645
+      ]
+    },
+    "duo": {
+      "size": [
+        1800,
+        720
+      ],
+      "anchor": [
+        900,
+        645
+      ]
+    },
+    "files": [
+      {
+        "id": "frog-idle",
+        "name": "青蛙 · 待机（眨眼）",
+        "seconds": 2,
+        "frames": 48,
+        "files": [
+          "loops/frog-idle.webm",
+          "loops/frog-idle.mp4",
+          "loops/frog-idle.gif"
+        ]
+      },
+      {
+        "id": "frog-walk",
+        "name": "青蛙 · 走路",
+        "seconds": 2.083,
+        "frames": 50,
+        "files": [
+          "loops/frog-walk.webm",
+          "loops/frog-walk.mp4",
+          "loops/frog-walk.gif"
+        ]
+      },
+      {
+        "id": "frog-wave",
+        "name": "青蛙 · 打招呼",
+        "seconds": 3.125,
+        "frames": 75,
+        "files": [
+          "loops/frog-wave.webm",
+          "loops/frog-wave.mp4",
+          "loops/frog-wave.gif"
+        ]
+      },
+      {
+        "id": "frog-cheer",
+        "name": "青蛙 · 欢呼蹦跳",
+        "seconds": 3.125,
+        "frames": 75,
+        "files": [
+          "loops/frog-cheer.webm",
+          "loops/frog-cheer.mp4",
+          "loops/frog-cheer.gif"
+        ]
+      },
+      {
+        "id": "pig-idle",
+        "name": "苍蝇猪 · 待机（扇翅膀、眨眼）",
+        "seconds": 2.083,
+        "frames": 50,
+        "files": [
+          "loops/pig-idle.webm",
+          "loops/pig-idle.mp4",
+          "loops/pig-idle.gif"
+        ]
+      },
+      {
+        "id": "pig-fly",
+        "name": "苍蝇猪 · 飞",
+        "seconds": 6.292,
+        "frames": 151,
+        "files": [
+          "loops/pig-fly.webm",
+          "loops/pig-fly.mp4",
+          "loops/pig-fly.gif"
+        ]
+      },
+      {
+        "id": "pig-walk",
+        "name": "苍蝇猪 · 走路",
+        "seconds": 2.083,
+        "frames": 50,
+        "files": [
+          "loops/pig-walk.webm",
+          "loops/pig-walk.mp4",
+          "loops/pig-walk.gif"
+        ]
+      },
+      {
+        "id": "pig-wave",
+        "name": "苍蝇猪 · 边飞边打招呼",
+        "seconds": 6.292,
+        "frames": 151,
+        "files": [
+          "loops/pig-wave.webm",
+          "loops/pig-wave.mp4",
+          "loops/pig-wave.gif"
+        ]
+      },
+      {
+        "id": "duo-walk",
+        "name": "手牵手散步",
+        "seconds": 2.083,
+        "frames": 50,
+        "files": [
+          "loops/duo-walk.webm",
+          "loops/duo-walk.mp4",
+          "loops/duo-walk.gif"
+        ]
+      },
+      {
+        "id": "duo-walk-away",
+        "name": "背影手牵手往前走",
+        "seconds": 2.083,
+        "frames": 50,
+        "files": [
+          "loops/duo-walk-away.webm",
+          "loops/duo-walk-away.mp4",
+          "loops/duo-walk-away.gif"
+        ]
+      }
+    ]
+  }
+}

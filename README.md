@@ -12,6 +12,12 @@
 - **在浏览器里放映**：用浏览器打开 `index.html`（`music.mp3` 要和它放在同一个目录）。
   可以暂停、拖动进度条、全屏，空格键播放 / 暂停。画面是实时绘制的，所以缩放到任何尺寸都清晰。
 
+## 角色素材
+
+青蛙和苍蝇猪的形象单独导出在 [`characters/`](characters/) 里，方便以后用同样的形象做新视频：
+透明背景 PNG（各种动作和表情）、角色设定图、给 AI 视频工具用的参考图和提示词、带透明通道的循环动画，
+以及一个可以自己摆姿势下载 PNG 的角色工作台（`characters/studio.html`）。详见 [characters/README.md](characters/README.md)。
+
 ## 分镜
 
 | 时间 | 场景 | 画面 |
@@ -86,4 +92,6 @@ js/
   player.js         播放器
   music.js          配乐与音效
 tools/render.js     离线渲染音频 / 视频
+tools/export-characters.js  导出角色素材 → characters/
+characters/         角色素材（PNG、设定图、参考图、循环动画、角色工作台）
 ```
